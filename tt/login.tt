@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ログイン</title></head>
+<body>
+<h1>管理画面ログイン</h1>
+
+
+<form action="/cgi-bin/app/app.cgi/cp?guid=ON" method="post">
+  PCメールアドレス：<input type="text" name="mail_address" size="50">
+  [% IF mail_err %]
+    <font color="#FF0000" size="2">[% mail_err | html %]</font><br>
+  [% END %]
+  <br>
+  パスワード：<input type="password" name="p">
+  [% IF pass_err %]
+    <font color="#FF0000" size="2">[% pass_err | html %]</font><br>
+  [% END %]
+  [% IF error_msg %]
+    <br>
+    <font color="#FF0000" size="2">[% error_msg | html %]</font><br>
+  [% END %]
+    <br>
+    <input type="submit" value="ログイン！">
+  
+
+</form>
+
+
+</body>
+</html>

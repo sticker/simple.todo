@@ -1,0 +1,19 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>本登録完了！</title></head>
+<body>
+<h1>登録が完了しました</h1>
+<br>
+■管理ページ<br>
+<a href="http://sticker.dip.jp/cgi-bin/app/app.cgi/login">ログイン</a>
+<br>
+<br>
+■ブックマークレット
+以下をお気に入りに入れることでワンクリックでTODO登録できます。
+<br>
+
+<a href='javascript:(function(){var s=document.createElement("scr"+"ipt");s.charset="UTF-8";s.language="javascr"+"ipt";s.type="text/javascr"+"ipt";s.src="http://sticker.dip.jp/cgi-bin/app/app.cgi/add?no=[% entry_no %]&todo="+encodeURI(window.getSelection());document.body.appendChild(s)})();'>ブックマークレット</a>
+
+</body>
+</html>

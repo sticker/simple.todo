@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>TODOリスト</title>
+<link href="/images/stodo/css/hoverbox.css" rel="stylesheet" type="text/css" media="screen, projection" />
+<!--[if IE]>
+<link rel="stylesheet" href='/images/stodo/css/hoverbox_ie_fixes.css' type="text/css" media="screen, projection" />
+<![endif]-->
+</head>
+<body>
+<form action="/cgi-bin/app/app.cgi/cp_list?guid=ON" method="post">
+<ul class="hoverbox">
+完了したタスクをチェックしてください<br>
+	[% FOREACH t = todo %]
+		[% LAST IF loop.index == loop.size %]
+		<label for="comp_todo_no[% t.3 %]">
+		[% IF t.0 == '[画像]' %]
+			<input type="checkbox" id="comp_todo_no[% t.3 %]" name="comp_todo_no" value="[% t.3 %]" [% IF t.1 == 1 %]checked [% END %]><li><a href="#"><img src="[% t.4 %]" alt="" /><img src="[% t.4 %]" alt="" class="preview" onclick="document.getElementById('comp_todo_no[% t.3 %]').click();"/></a></li><br>
+		[% ELSE %]
+			<input type="checkbox" id="comp_todo_no[% t.3 %]" name="comp_todo_no" value="[% t.3 %]" [% IF t.1 == 1 %]checked [% END %]>[% t.0 %]<br>
+		[% END %]
+		</label>
+	[% END %]
+</ul>
+	<input type="text" name="insert_todo" size="50">←TODOを追加<br>
+	<input type="submit" value="追加・完了">
+</form>
+<br>
+<br>
+<a href='javascript:(function(){var s=document.createElement("scr"+"ipt");s.charset="UTF-8";s.language="javascr"+"ipt";s.type="text/javascr"+"ipt";s.src="http://sticker.dip.jp/cgi-bin/app/app.cgi/add?no=[% entry_no %]&todo="+encodeURI(window.getSelection());document.body.appendChild(s)})();'>ブックマークレット</a>
+</body>
+</html>
