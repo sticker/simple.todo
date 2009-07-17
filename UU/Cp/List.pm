@@ -36,7 +36,6 @@ sub do_cplist {
 	my $db = UU::DB->connect();
 	my $sth;
 
-	#warn Dumper(@comp_todo_no);
 	foreach(@comp_todo_no) {
 		my $t = $_;
 		$sth = $db->prepare("UPDATE stodo_todo_info SET status = 1 WHERE entry_no = ? AND todo_no = ?");
@@ -63,22 +62,12 @@ sub do_cplist {
 		$db->commit;
 	}
 
-	#$sth = $db->prepare("SELECT todo,status,created_date,todo_no,file_path FROM stodo_todo_info WHERE entry_no = ? AND status != 99 order by todo_no");
 	$sth = $db->prepare("SELECT todo,status,created_date,todo_no,file_path FROM stodo_todo_info WHERE entry_no = ? AND status = 0 order by todo_no");
 	$sth->bind_param(1, $entry_no);
 	$sth->execute;
-	#my @todo_ary = ();
-	#while ( my $tbl_ary_ref = $sth->fetchrow_arrayref ){
-	#	my ($t, $status, $todo_no) = @$tbl_ary_ref;
-	#	my @ary = (jcode($t)->utf8, $status, $todo_no);
-	#	push(@todo_ary, @ary);
-	#}
-	#warn Dumper(@todo_ary);
 
 	my $tbl_ary_ref = $sth->fetchall_arrayref; 
-	#warn Dumper($tbl_ary_ref);
 
-	#for(my $i = 0; $i < $tbl_ary_ref->[0]; $i++){
 	foreach my $each (@$tbl_ary_ref) {
 		$each->[0] = jcode($each->[0])->utf8;
 	}

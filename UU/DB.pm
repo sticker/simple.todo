@@ -43,8 +43,4 @@ sub next_todo_no {
 	return $rec[0]+1;
 }
 
-
-#print "entry_no:".entry_no_gen('abc')."\n";
-
-
 1;

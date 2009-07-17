@@ -77,7 +77,6 @@ sub do_reg {
 
 	my $mailtmp = Text::Template->new(SOURCE => '/project/stodo/mailtmp/RegMail.tpl');
 	my $body = $mailtmp->fill_in(HASH => \%body_data) || warn "Couldn't fill in template: $Text::Template::ERROR";
-	#warn "body=["."$body]";
 	UU::Mail::send('simple.todo.info@gmail.com',$mail_address,'[Simple TODO]仮登録されました', $body);
 	UU::Mail::send('simple.todo.info@gmail.com',$mobile_address,'[Simple TODO]仮登録されました', $body);
 
